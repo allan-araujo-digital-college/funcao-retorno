@@ -7,8 +7,16 @@
     <title>Document</title>
   </head>
   <body>
-    <input type="text" name="" id="texto1" onchange="onChange(this)" />
-    <input type="text" name="" id="texto2" onchange="onChange(this)" />
+    <input type="button" value="1" onclick="metodoCustomizado(1)" />
+    <input type="button" value="2" onclick="metodoCustomizado(2)" />
+    <input type="button" value="+" onclick="metodoCustomizado('+')" />
+    <input type="button" value="-" onclick="metodoCustomizado('-')" />
+    <input type="button" value="=" onclick="metodoCustomizado('=')" />
+    <br />
+    display:<span id="display"></span>
+    <br />
+    historico:<span id="displayHistorico"></span>
+    <br />
     <script src="index.js"></script>
   </body>
 </html>

@@ -1,16 +1,38 @@
-let contador = 0;
-function clickDoBotao() {
-  console.log(contador++);
-}
+let display = "";
+let displayHistorico = "";
+let fatorNumerico = 0;
+let operacao = "";
 
-function onFocus(valor) {
-  console.log("onFocus" + valor);
-}
+function metodoCustomizado(param) {
+  if (typeof param === "number") {
+    display = display + param;
+    displayHistorico = displayHistorico + param;
+  }
+  if (typeof param === "string") {
+    if (param === "-") {
+      fatorNumerico = parseInt(display);
+      display = "";
+      operacao = "-";
+      displayHistorico = displayHistorico + "-" + display;
+    }
+    if (param === "+") {
+      fatorNumerico = parseInt(display);
+      display = "";
+      operacao = "+";
+      displayHistorico = displayHistorico + "+" + display;
+    }
+    if (param === "=") {
+      if (operacao === "+") {
+        display = fatorNumerico + parseInt(display);
+        operacao = "";
+      }
+      if (operacao === "-") {
+        display = fatorNumerico - parseInt(display);
+        operacao = "";
+      }
+    }
+  }
 
-function onBlur(valor) {
-  console.log("onBlur" + valor);
-}
-
-function onChange(parametro1) {
-  console.log("onChange ", parametro1.value);
+  document.getElementById("display").textContent = display;
+  document.getElementById("displayHistorico").textContent = displayHistorico;
 }
